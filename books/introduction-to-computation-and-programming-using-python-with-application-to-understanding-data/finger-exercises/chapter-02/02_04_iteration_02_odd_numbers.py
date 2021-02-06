@@ -11,7 +11,7 @@ def largest_odd_number_test():
     test_cases.append([5,3,5,1])
     test_cases.append(['No odd numbers', 2, 4, 6])
     for t in test_cases:
-        actual = largest_odd_number(t[1],t[2],t[3])
+        actual = largest_odd_number(t[1:])
         expected = t[0]
         if actual == expected: 
             print('pass', 'e:', expected, 'a:', actual, 'x:', t[1], 'y:', t[2], 'z:', t[3] )
@@ -32,21 +32,17 @@ def max_number(numbers):
             max_num = n
     return max_num
 
-def largest_odd_number(x, y, z):
+def largest_odd_number(integers_list):
     '''
-    x: integer number
-    y: integer number
-    z: integer number
-    return: largest odd number among x, y, and z. If none are 
+    integers_list: list of integers
+    return: largest odd number in the list. If none are 
             odd print a message to that effect
     '''
-    largest_odd_number = None
-    numbers = [x, y, z]
-    odd_numbers = filter_odd_numbers(numbers)
+    largest_odd_number = 'No odd numbers'
+    odd_numbers = filter_odd_numbers(integers_list)
     if len(odd_numbers) > 0:
-        return max_number(odd_numbers)
-    else: 
-        return 'No odd numbers' 
+        largest_odd_number = max_number(odd_numbers) 
+    return largest_odd_number
 
 largest_odd_number_test()
 integers_string = input('Enter 10 integers separated by space: ')
@@ -54,6 +50,8 @@ integers_string_list = integers_string.split()
 integers_list = []
 for i in integers_string_list:
     integers_list.append(int(i))
+
+print('largest odd number:', largest_odd_number(integers_list))
 
 
 
