@@ -49,8 +49,8 @@ def largest_odd_number(x, y, z):
         return 'No odd numbers' 
 
 largest_odd_number_test()
-integers_string = input('Enter 10 integers separated by space:')
-integers_string_list = integers_string_list.split()
+integers_string = input('Enter 10 integers separated by space: ')
+integers_string_list = integers_string.split()
 integers_list = []
 for i in integers_string_list:
     integers_list.append(int(i))
