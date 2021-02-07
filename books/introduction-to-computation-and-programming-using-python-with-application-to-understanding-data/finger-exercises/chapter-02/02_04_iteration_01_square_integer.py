@@ -1,3 +1,20 @@
+def square_int_test():
+    test_cases = []
+    test_cases.append([9, -3])
+    test_cases.append([1, -1])
+    test_cases.append([0, 0])
+    test_cases.append([1, 1])
+    test_cases.append([9, 3])
+    status = 'FAILURE'
+    print('status','expected','actual','argument', sep = ',')
+    for t in test_cases:
+        expected = t[0]
+        argument = t[1]
+        actual = square_int(argument)
+        if expected == actual:
+            status = 'success'
+        print(status, expected, actual, argument, sep = ',')
+
 def square_int(x):
     '''
     Square an integer, the hard way
@@ -11,5 +28,4 @@ def square_int(x):
         itersLeft = itersLeft - 1
     return ans
 
-x = 3
-print('x^2 =', square_int(x))
+square_int_test()
