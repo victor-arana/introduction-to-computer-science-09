@@ -1,8 +1,15 @@
-# Square an integer, the hard way
+def square_int(x):
+    '''
+    Square an integer, the hard way
+    x: integer number
+    returns: x^2 x squared
+    '''
+    ans = 0
+    itersLeft = x
+    while (itersLeft != 0):
+        ans = ans + x
+        itersLeft = itersLeft - 1
+    return ans
+
 x = 3
-ans = 0
-itersLeft = x
-while (itersLeft != 0):
-    ans = ans + x
-    itersLeft = itersLeft - 1
-print( str(x) + '*' + str(x) + ' = ' + str(ans)) 
+print('x^2 =', square_int(x))
