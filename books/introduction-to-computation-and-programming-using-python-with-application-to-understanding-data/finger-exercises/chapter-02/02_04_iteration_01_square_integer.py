@@ -22,9 +22,9 @@ def square_int(x):
     returns: x^2 x squared
     '''
     ans = 0
-    itersLeft = x
+    itersLeft = abs(x)
     while (itersLeft != 0):
-        ans = ans + x
+        ans = ans + abs(x)
         itersLeft = itersLeft - 1
     return ans
 
