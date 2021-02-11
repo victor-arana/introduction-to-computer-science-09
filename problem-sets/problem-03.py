@@ -23,7 +23,24 @@ def problem_03_test():
             status = 'success'
         print(status, argument, actual, expected, sep=separator)
 
+def isStringOrdered(string):
+    isOrdered = True
+    for i in range(len(string) - 1):
+        if string[i] > string[i+1]:
+            isOrdered = False
+    return isOrdered
+
 def longest_ordered(string):
-    return string
+    n = 0
+    longestString = ''
+    stringFound = False
+    while n < len(string) and stringFound == False:
+        for i in range(n):
+            if isStringOrdered(string[i:len(string) - (n - i)]):
+                longestString = string[i:len(string) - (n - i)]
+                stringFound = True
+                break
+        n = n + 1
+    return longestString 
 
 problem_03_test()
