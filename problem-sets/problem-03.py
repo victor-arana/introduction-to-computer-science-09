@@ -34,10 +34,10 @@ def longest_ordered(string):
     n = 0
     longestString = ''
     stringFound = False
-    while n < len(string) and stringFound == False:
+    while n <= len(string) and stringFound == False:
         for i in range(n):
-            if isStringOrdered(string[i:len(string) - (n - i)]):
-                longestString = string[i:len(string) - (n - i)]
+            if isStringOrdered(string[i:len(string) - (n - i) + 1]):
+                longestString = string[i:len(string) - (n - i) + 1]
                 stringFound = True
                 break
         n = n + 1
