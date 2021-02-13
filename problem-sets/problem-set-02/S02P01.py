@@ -1,3 +1,35 @@
+def readCSV(file_path, delim):
+    import csv
+    rows = []
+    with open(file_path) as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=delim)
+        for row in csv_reader:
+            col = []
+            for column in row:
+                col.append(float(column))
+            rows.append(col)
+    return rows
+
+
+def remaining_balance_test():
+    test_cases = readCSV('S02P01-test-cases.csv',',')
+    separator = ','
+    print('status', 'expected', 'actual', 'balance', 'annualInterestRate', 'monthlyPaymentRate', sep=separator)
+    for t in test_cases:
+        status = 'FAILURE'
+        expected = t[0]
+        balance = t[1]
+        annualInterestRate = t[2]
+        monthlyPaymentRate = t[3]
+        actual = remainingBalance(balance, monthlyPaymentRate, annualInterestRate, 12)
+        actual = round(actual,2)
+        if actual == expected:
+            status = 'success'
+        else:
+            status = 'FAILURE'
+            print(status, expected, actual, balance, annualInterestRate, monthlyPaymentRate, sep=separator)
+        
+
 def remainingBalance(b_0, r_m, r_a, i):
     '''
     b_0: Initial balance
@@ -30,14 +62,11 @@ def totalPaid(b_0, r_m, r_a, i):
     for j in range(1, i+1):
         total += minimumPayment(b_0, r_m, r_a, j)
     return total
-        
-balance = 4842
+
+#remaining_balance_test()
+
+balance = 42
 annualInterestRate = 0.2 
 monthlyPaymentRate = 0.04
 
-for i in range(1,13):
-    print('Month: ', i) 
-    print('Minimum monthly payment:', "%.2f" % minimumPayment(balance, monthlyPaymentRate, annualInterestRate, i))
-    print('Remaining balance:', "%.2f" % remainingBalance(balance, monthlyPaymentRate, annualInterestRate, i))  
-print('Total paid:', "%.2f" % totalPaid(balance, monthlyPaymentRate, annualInterestRate, 12))      
-print('Remaining balance:', "%.2f" % remainingBalance(balance, monthlyPaymentRate, annualInterestRate, 12))
+print('Remaining balance:', round(remainingBalance(balance, monthlyPaymentRate, annualInterestRate, 12), 2))
